@@ -52,6 +52,21 @@ def boss3():
 	save['levelid'] = 4
 	go()
 	handlelevel()
+def boss4():
+	dialogue("Tails","Sonic, can we stop now?")
+	dialogue("Sonic","No way! We gotta finally defeat Egghead once and for all.")
+	bosshandler("Eggman",9,2,ambush=True)
+	dialogue("Knuckles","You know, Sonic, Tails is really hurt right now, so maybe we should rest for a while.")
+	dialogue("Sonic","No rest, gotta keep going!")
+	sleep(1)
+	dialogue("Tails","THAT'S IT!!!!! I'm sick and tired of Sonic being an insufferable prick! I have a headache, I can see 20 Sonics, and I have a splitting headache!")
+	dialogue("Sonic","Umm...")
+	dialogue("Knuckles","Now look at what you've done! That's it! I'm outta here! Tails, do you want to come with me? We'll dfeat Eggman at our own pace!")
+	dialogue("Tails","Sure.")
+	print("Sonic continues on, alone.")
+	save["levelid"] = 5
+	go()
+	handlelevel()
 def end():
 	print("Sonic, Tails, and Knuckles saved the day, and have become a little closer now.")
 	print("The End.")
@@ -70,15 +85,14 @@ def bosshandler(name, hp, chance, ambush=False):
 		print("{} has ambushed our heroes!".format(name))
 	else:
 		print("{} has appeared.".format(name))
+	print("It will take {!s} hits to defeat {}'s machine.".format(hp,name))
 	hits = hp
 	while hits >= 1:
 		if random.randint(1,chance) == 1:
 			hits -= 1;
-			print("The boss was hit!")
+			print("{} was hit!".format(name))
 			if hits > 0:
 				print("Remaining hits: {:>15}".format(str(hits)))
-		else:
-			print("The boss was not hit!")
 		if hits > 0:
 			sleep(1)
 	print("{} has been defeated!".format(name))

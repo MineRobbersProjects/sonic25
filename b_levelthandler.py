@@ -9,5 +9,7 @@ def handlelevel():
 	elif save["levelid"] == 3:
 		boss3()
 	elif save["levelid"] == 4:
+		boss4()
+	elif save["levelid"] == 5:
 		end()
 handlelevel()
