@@ -60,8 +60,9 @@ def boss4():
 	dialogue("Sonic","No rest, gotta keep going!")
 	sleep(1)
 	dialogue("Tails","THAT'S IT!!!!! I'm sick and tired of Sonic being an insufferable prick! I have a headache, I can see 20 Sonics, and I have a splitting headache!")
-	dialogue("Sonic","Umm...")
-	dialogue("Knuckles","Now look at what you've done! That's it! I'm outta here! Tails, do you want to come with me? We'll dfeat Eggman at our own pace!")
+	dialogue("Sonic","Also short term memory loss, but whatever! We have to defeat Egghead before he tries to kill everyone!")
+	dialogue("Tails","UGGH!!!!!!!!!!")
+	dialogue("Knuckles","Now look at what you've done! That's it! I'm outta here! Tails, do you want to come with me? We'll defeat Eggman at our own pace!")
 	dialogue("Tails","Sure.")
 	print("Sonic continues on, alone.")
 	save["levelid"] = 5
