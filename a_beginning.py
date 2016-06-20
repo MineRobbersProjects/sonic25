@@ -1,4 +1,3 @@
-import pickle
 print("Sonic 25 - A text adventure by ImANoob")
 print("--------------------------------------")
 try:

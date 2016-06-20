@@ -5,4 +5,4 @@ bin/sonic25.py: $(PYFILES)
 
 .PHONY: play
 play: bin/sonic25.py
-	@python bin/sonic25.py
+	@clear; python bin/sonic25.py
