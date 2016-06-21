@@ -71,11 +71,45 @@ def boss4():
 def boss5():
 	dialogue("Eggman","You will never defeat my new Eggrobo, especially without help from you friends!")
 	dialogue("Sonic","I can still defeat you!")
-	bosshandler("Eggrobo Mk. 1",10,10)
+	bosshandler("Eggrobo Mk. 1",10,10,machine=True)
 	dialogue("Sonic","See? I still defeated you, although it took a little while...")
 	save["levelid"] = 6
 	go()
 	handlelevel()
+def boss6():
+	dialogue("Eggman","Ho ho ho!")
+	dialogue("Sonic","Uuggghhh...")
+	print("Sonic is about to be defeated when suddenly...")
+	sleep(2)
+	print("THUD!")
+	dialogue("Knuckles","Take that, you hunk of metal!")
+	print("CLUNK!")
+	dialogue("Tails", "And that!")
+	dialogue("Sonic","Thanks guys! You know, I was wrong to be a prick. Will you forgive me?")
+	dialogue("Tails","Sure.")
+	dialogue("Knuckles","Sure. Now let's go defeat Egghead!")
+	save["levelid"] = 7
+	go()
+	handlelevel()
+def boss7():
+	dialogue("Eggman","Face the wrath of my latest machine, you three!")
+	bosshandler("Eggman",8,3)
+	dialogue("Eggman","UGH! Why can't I defeat you!")
+	dialogue("Sonic","Every time you try to control a greater force, it never works!")
+	dialogue("Eggman","It works sometimes!")
+	dialogue("Sonic","Chaos, the Eclipse Cannon, Dark Gaia, the Flames of Disaster... You know, I could go on all day with times you tried to control a greater force and it failed.")
+	dialogue("Eggman", "Well, I know what will work!")
+	dialogue("Tails","Uh oh. Guys, he just launched a missile towards the core of the Earth!")
+	save["levelid"] = 8
+	go()
+	handlelevel()
+def boss8():
+	bosshandler("Eggman's Core Missile",random.randint(10,20),random.randint(2,6),machine=True,final=True)
+	dialogue("Sonic","Yeah! We did it!")
+	dialogue("Tails","And we did it together!")
+	dialogue("Knuckles","Well, I guess we did! Let's go home. I'm tired.")
+	go()
+	end()
 def end():
 	print("Sonic, Tails, and Knuckles saved the day, and have become a little closer now.")
 	print("The End.")
@@ -89,11 +123,12 @@ def credits():
 	print("Code made by ImANoob (reddit user /u/kd2bwz2)")
 	print("Goodbye!")
 	raw_input("Press enter to exit.")
-def bosshandler(name, hp, chance, ambush=False, machine=False):
-	if ambush:
-		print("{} has ambushed our heroes!".format(name))
-	else:
-		print("{} has appeared.".format(name))
+def bosshandler(name, hp, chance, ambush=False, machine=False, final=False):
+	if not final:
+		if ambush:
+			print("{} has ambushed our heroes!".format(name))
+		else:
+			print("{} has appeared.".format(name))
 	if machine:
 		print("It will take {!s} hits to defeat {}.".format(hp, name))
 	else:
@@ -123,5 +158,9 @@ def handlelevel():
 	elif save["levelid"] == 5:
 		boss5()
 	elif save["levelid"] == 6:
-		end()
+		boss6()
+	elif save["levelid"] == 7:
+		boss7()
+	elif save["levelid"] == 8:
+		boss8()
 handlelevel()
