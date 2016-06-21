@@ -68,6 +68,14 @@ def boss4():
 	save["levelid"] = 5
 	go()
 	handlelevel()
+def boss5():
+	dialogue("Eggman","You will never defeat my new Eggrobo, especially without help from you friends!")
+	dialogue("Sonic","I can still defeat you!")
+	bosshandler("Eggrobo Mk. 1",10,10)
+	dialogue("Sonic","See? I still defeated you, although it took a little while...")
+	save["levelid"] = 6
+	go()
+	handlelevel()
 def end():
 	print("Sonic, Tails, and Knuckles saved the day, and have become a little closer now.")
 	print("The End.")
@@ -81,12 +89,15 @@ def credits():
 	print("Code made by ImANoob (reddit user /u/kd2bwz2)")
 	print("Goodbye!")
 	raw_input("Press enter to exit.")
-def bosshandler(name, hp, chance, ambush=False):
+def bosshandler(name, hp, chance, ambush=False, machine=False):
 	if ambush:
 		print("{} has ambushed our heroes!".format(name))
 	else:
 		print("{} has appeared.".format(name))
-	print("It will take {!s} hits to defeat {}'s machine.".format(hp,name))
+	if machine:
+		print("It will take {!s} hits to defeat {}.".format(hp, name))
+	else:
+		print("It will take {!s} hits to defeat {}'s machine.".format(hp,name))
 	hits = hp
 	while hits >= 1:
 		if random.randint(1,chance) == 1:
@@ -97,3 +108,20 @@ def bosshandler(name, hp, chance, ambush=False):
 		if hits > 0:
 			sleep(1)
 	print("{} has been defeated!".format(name))
+def handlelevel():
+	saveData(save)
+	if save["levelid"] == 0:
+		beginning()
+	elif save["levelid"] == 1:
+		boss1()
+	elif save["levelid"] == 2:
+		boss2()
+	elif save["levelid"] == 3:
+		boss3()
+	elif save["levelid"] == 4:
+		boss4()
+	elif save["levelid"] == 5:
+		boss5()
+	elif save["levelid"] == 6:
+		end()
+handlelevel()
